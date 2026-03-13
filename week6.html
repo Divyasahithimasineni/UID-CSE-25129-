@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MyShop Online Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f2f2f2;
+}
+
+/* HEADER */
+
+.header{
+background:#a8f15a;
+color:white;
+padding:15px;
+font-size:24px;
+text-align:center;
+}
+
+/* LAYOUT */
+
+.container{
+display:flex;
+flex-wrap:wrap;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+flex:1 1 220px;
+background:#aaf8fc;
+padding:20px;
+border-right:1px solid #ccc;
+}
+
+.sidebar h3{
+margin-top:0;
+}
+
+.sidebar label{
+display:block;
+padding:10px;
+cursor:pointer;
+border-radius:4px;
+}
+
+.sidebar label:hover{
+background:#eee;
+}
+
+/* RADIO BUTTONS */
+
+input[type="radio"]{
+display:none;
+}
+
+/* PRODUCTS */
+
+.products{
+flex:4 1 600px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:15px;
+border-radius:6px;
+text-align:center;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:5px;
+}
+
+.price{
+color:green;
+font-weight:bold;
+}
+
+.rating{
+color:orange;
+}
+
+/* CATEGORY FILTER */
+
+#electronics:checked ~ .container .products .card:not(.electronics){
+display:none;
+}
+
+#men:checked ~ .container .products .card:not(.men){
+display:none;
+}
+
+#women:checked ~ .container .products .card:not(.women){
+display:none;
+}
+
+#books:checked ~ .container .products .card:not(.books){
+display:none;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:900px){
+
+.products{
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+}
+
+}
+
+@media(max-width:768px){
+
+.container{
+flex-direction:column;
+}
+
+.sidebar{
+width:100%;
+border-right:none;
+border-bottom:1px solid #ccc;
+}
+
+.products{
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+}
+
+.header{
+font-size:20px;
+}
+
+}
+
+@media(max-width:480px){
+
+.products{
+grid-template-columns:1fr;
+}
+
+.card img{
+height:160px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+ Nyra shop
+</div>
+
+<!-- RADIO BUTTONS -->
+
+<input type="radio" name="cat" id="all" checked>
+<input type="radio" name="cat" id="electronics">
+<input type="radio" name="cat" id="men">
+<input type="radio" name="cat" id="women">
+<input type="radio" name="cat" id="books">
+
+<div class="container">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h3>Categories</h3>
+
+<label for="all">All Products</label>
+<label for="electronics">Electronics</label>
+<label for="men">Men Clothing</label>
+<label for="women">Women Clothing</label>
+<label for="books">Books</label>
+
+</div>
+
+<!-- PRODUCTS -->
+
+<div class="products">
+
+<div class="card electronics">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+<h3>Smartphone</h3>
+<p class="price">$500</p>
+<p class="rating">⭐⭐⭐⭐☆ (120 reviews)</p>
+<p>High performance smartphone with fast processor.</p>
+</div>
+
+<div class="card electronics">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+<h3>Laptop</h3>
+<p class="price">$900</p>
+<p class="rating">⭐⭐⭐⭐⭐ (210 reviews)</p>
+<p>Powerful laptop with SSD and 16GB RAM.</p>
+</div>
+
+<div class="card men">
+<img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
+<h3>Men T-Shirt</h3>
+<p class="price">$30</p>
+<p class="rating">⭐⭐⭐⭐</p>
+<p>Comfortable cotton daily wear t-shirt.</p>
+</div>
+
+<div class="card men">
+<img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b">
+<h3>Men Jacket</h3>
+<p class="price">$85</p>
+<p class="rating">⭐⭐⭐⭐⭐</p>
+<p>Stylish winter jacket with premium fabric.</p>
+</div>
+
+<div class="card women">
+<img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b">
+<h3>Floral Dress</h3>
+<p class="price">$55</p>
+<p class="rating">⭐⭐⭐⭐⭐</p>
+<p>Beautiful party dress for special occasions.</p>
+</div>
+
+<div class="card women">
+<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c">
+<h3>Evening Gown</h3>
+<p class="price">$120</p>
+<p class="rating">⭐⭐⭐⭐⭐</p>
+<p>Elegant gown perfect for events.</p>
+</div>
+
+<div class="card books">
+<img src="https://images.unsplash.com/photo-1512820790803-83ca734da794">
+<h3>Programming Book</h3>
+<p class="price">$25</p>
+<p class="rating">⭐⭐⭐⭐⭐</p>
+<p>Learn programming with practical examples.</p>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
