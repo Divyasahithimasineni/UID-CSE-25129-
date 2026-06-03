@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Registration Form Validation</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #a3f4c6, hsl(70, 96%, 83%));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        width: 350px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);      
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 90%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        background-color: #667eea;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #5a67d8;
+    }
+
+    .error {
+        color: red;
+        font-size: 14px;
+        text-align: left;
+        margin-left: 15px;
+    }
+
+    .success {
+        color: green;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Registration Form</h2>
+
+    <form onsubmit="return validateForm()">
+        <input type="text" id="name" placeholder="Enter Name"><br>
+        <div id="nameError" class="error"></div>
+
+        <input type="text" id="email" placeholder="Enter Email"><br>
+        <div id="emailError" class="error"></div>
+
+        <input type="password" id="password" placeholder="Enter Password"><br>
+        <div id="passError" class="error"></div>
+
+        <button type="submit">Register</button>
+
+        <div id="successMsg" class="success"></div>
+    </form>
+</div>
+
+<script>
+function validateForm() {
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value;
+
+    let nameError = document.getElementById("nameError");
+    let emailError = document.getElementById("emailError");
+    let passError = document.getElementById("passError");
+    let successMsg = document.getElementById("successMsg");
+
+    // Clear previous messages
+    nameError.innerHTML = "";
+    emailError.innerHTML = "";
+    passError.innerHTML = "";
+    successMsg.innerHTML = "";
+
+    let valid = true;
+
+    // Name validation
+    if (name === "") {
+        nameError.innerHTML = "Name cannot be empty";
+        valid = false;
+    }
+
+    // Email validation
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!emailPattern.test(email)) {
+        emailError.innerHTML = "Enter a valid email";
+        valid = false;
+    }
+
+    // Password validation
+    if (password.length < 6) {
+        passError.innerHTML = "Password must be at least 6 characters";
+        valid = false;
+    }
+
+    // If all valid
+    if (valid) {
+        successMsg.innerHTML = "Registration Successful!";
+    }
+
+    return valid; // prevents submission if false
+}
+</script>
+
+</body>
+</html>
