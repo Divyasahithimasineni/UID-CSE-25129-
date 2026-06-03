@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Week 9 JavaScript Programs</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #dfe9f3, #ffffff);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        input {
+            padding: 12px;
+            width: 250px;
+            font-size: 16px;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            margin: 15px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #21618c;
+            transform: scale(1.05);
+        }
+
+        #output {
+            margin-top: 25px;
+            padding: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #1b4f72;
+            background-color: #eaf2f8;
+            border-radius: 10px;
+            min-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Check the number</h1>
+
+        <p>Enter a number:</p>
+        <input type="number" id="numberInput" placeholder="Enter number">
+
+        <br>
+
+        <button onclick="findEven()">Even Number</button>
+        <button onclick="findOdd()">Odd Number</button>
+        <button onclick="checkPrime()">Prime or Not</button>
+        <button onclick="findFactorial()">Factorial</button>
+        <button onclick="checkArmstrong()">Armstrong or Not</button>
+
+        <div id="output">Output will be displayed here</div>
+    </div>
+
+    <script>
+        function getNumber() {
+            return parseInt(document.getElementById("numberInput").value);
+        }
+
+        function findEven() {
+            let num = getNumber();
+
+            if (isNaN(num)) {
+                document.getElementById("output").innerHTML = "Please enter a valid number.";
+            } 
+            else if (num % 2 === 0) {
+                document.getElementById("output").innerHTML = num + " is an Even Number.";
+            } 
+            else {
+                document.getElementById("output").innerHTML = num + " is not an Even Number.";
+            }
+        }
+
+        function findOdd() {
+            let num = getNumber();
+
+            if (isNaN(num)) {
+                document.getElementById("output").innerHTML = "Please enter a valid number.";
+            } 
+            else if (num % 2 !== 0) {
+                document.getElementById("output").innerHTML = num + " is an Odd Number.";
+            } 
+            else {
+                document.getElementById("output").innerHTML = num + " is not an Odd Number.";
+            }
+        }
+
+        function checkPrime() {
+            let num = getNumber();
+            let isPrime = true;
+
+            if (isNaN(num)) {
+                document.getElementById("output").innerHTML = "Please enter a valid number.";
+                return;
+            }
+
+            if (num <= 1) {
+                isPrime = false;
+            } 
+            else {
+                for (let i = 2; i <= Math.sqrt(num); i++) {
+                    if (num % i === 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+            }
+
+            if (isPrime) {
+                document.getElementById("output").innerHTML = num + " is a Prime Number.";
+            } 
+            else {
+                document.getElementById("output").innerHTML = num + " is not a Prime Number.";
+            }
+        }
+
+        function findFactorial() {
+            let num = getNumber();
+            let fact = 1;
+
+            if (isNaN(num) || num < 0) {
+                document.getElementById("output").innerHTML = "Please enter a positive number.";
+                return;
+            }
+
+            for (let i = 1; i <= num; i++) {
+                fact = fact * i;
+            }
+
+            document.getElementById("output").innerHTML =
+                "Factorial of " + num + " is " + fact + ".";
+        }
+
+        function checkArmstrong() {
+            let num = getNumber();
+
+            if (isNaN(num)) {
+                document.getElementById("output").innerHTML = "Please enter a valid number.";
+                return;
+            }
+
+            let original = num;
+            let sum = 0;
+            let digits = num.toString().length;
+
+            while (num > 0) {
+                let digit = num % 10;
+                sum = sum + Math.pow(digit, digits);
+                num = Math.floor(num / 10);
+            }
+
+            if (sum === original) {
+                document.getElementById("output").innerHTML =
+                    original + " is an Armstrong Number.";
+            } 
+            else {
+                document.getElementById("output").innerHTML =
+                    original + " is not an Armstrong Number.";
+            }
+        }
+    </script>
+
+</body>
+</html>
