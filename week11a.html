@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Username Validation</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #ff7e5f, #feb47b);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        width: 350px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 90%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+    .message {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .success {
+        color: green;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Username Validation</h2>
+    
+    <input type="text" id="username" placeholder="Enter username" onkeyup="validateUsername()">
+    
+    <div id="message" class="message"></div>
+</div>
+
+<script>
+function validateUsername() {
+    let username = document.getElementById("username").value;
+    let message = document.getElementById("message");
+
+    if (username.length === 0) {
+        message.innerHTML = "";
+    }
+    else if (username.length < 5) {
+        message.innerHTML = "Username must be at least 5 characters";
+        message.className = "message error";
+    } 
+    else {
+        message.innerHTML = "Valid Username";
+        message.className = "message success";
+    }
+}
+</script>
+
+</body>
+</html>
